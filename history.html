@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction History | VisionSort</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="logo">
+
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+
+        <h2>VisionSort</h2>
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">🏠 Home</a>
+
+        <a href="/history">📂 History</a>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+    <h1>📂 Prediction History</h1>
+
+    <p class="subtitle">
+
+        View all previous AI waste classification results.
+
+    </p>
+
+    {% if history %}
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Image</th>
+
+                <th>Preview</th>
+
+                <th>Category</th>
+
+                <th>Confidence</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for item in history %}
+
+            <tr>
+
+                <td>{{ item.image }}</td>
+
+                <td>
+
+                    <img
+                        src="{{ url_for('static', filename='uploads/' + item.image) }}"
+                        class="history-image"
+                        alt="Preview">
+
+                </td>
+
+                <td>
+
+                    <span class="history-badge">
+
+                        {{ item.category }}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    {{ item.confidence }}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% else %}
+
+    <div class="no-data">
+
+        <h2>No Predictions Yet</h2>
+
+        <p>
+
+            Upload an image to start using VisionSort.
+
+        </p>
+
+    </div>
+
+    {% endif %}
+
+    <br><br>
+
+    <a href="/">
+
+        <button>
+
+            🏠 Back to Home
+
+        </button>
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

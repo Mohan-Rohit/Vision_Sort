@@ -1,0 +1,5 @@
+Flask – Used to develop the web application and handle user requests.
+Ultralytics – Used to load and run the YOLOv8 model for AI-based waste classification.
+NumPy – Used for numerical computations and array operations during image processing.
+Pillow – Used to read, process, and manage uploaded image files.
+Torch (PyTorch) – Provides the deep learning framework required to run the YOLOv8 model.

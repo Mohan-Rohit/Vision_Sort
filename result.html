@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Result | VisionSort</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="logo">
+
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+
+        <h2>VisionSort</h2>
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">🏠 Home</a>
+
+        <a href="/history">📂 History</a>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+    <h1>Prediction Result</h1>
+
+    <p class="subtitle">
+
+        AI has successfully analyzed the uploaded image.
+
+    </p>
+
+    <!-- Uploaded Image -->
+
+    <div class="image-card">
+
+        <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="Uploaded Image">
+
+    </div>
+
+    <!-- Result Grid -->
+
+    <div class="result-grid">
+
+        <div class="info-card">
+
+            <h3>🗂 Detected Category</h3>
+
+            <div class="badge">
+
+                {{ category }}
+
+            </div>
+
+        </div>
+
+        <div class="info-card">
+
+            <h3>⭐ Confidence Score</h3>
+
+            <h2 class="confidence">
+
+                {{ confidence }}
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <!-- Suggestion -->
+
+    <div class="suggestion-card">
+
+        <h3>♻️ Disposal Suggestion</h3>
+
+        <p>
+
+            {{ suggestion }}
+
+        </p>
+
+    </div>
+
+    <!-- Action Buttons -->
+
+    <div class="button-group">
+
+        <a href="/">
+
+            <button>
+
+                🔄 Upload Another Image
+
+            </button>
+
+        </a>
+
+        <a href="/history">
+
+            <button>
+
+                📜 View History
+
+            </button>
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

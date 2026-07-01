@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionSort | AI Waste Classification</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="logo">
+
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+
+        <h2>VisionSort</h2>
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">🏠 Home</a>
+
+        <a href="/history">📂 History</a>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+    <h1>♻️ AI-Powered Smart Waste Classification</h1>
+
+    <p class="subtitle">
+
+        Upload an image and let Artificial Intelligence identify
+        the type of waste automatically.
+
+    </p>
+
+    <!-- Dashboard -->
+
+    <h2 class="dashboard-title">
+
+        📊 Dashboard Statistics
+
+    </h2>
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <h3>{{ total }}</h3>
+
+            <p>Total Predictions</p>
+
+        </div>
+
+        {% for category, count in stats.items() %}
+
+        <div class="stat-card">
+
+            <h3>{{ count }}</h3>
+
+            <p>{{ category }}</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- Upload Form -->
+
+    <form
+        action="/predict"
+        method="POST"
+        enctype="multipart/form-data">
+
+        <div class="upload-box">
+
+            <input
+                type="file"
+                name="image"
+                accept="image/*"
+                required>
+
+        </div>
+
+        <button type="submit">
+
+            🔍 Classify Waste
+
+        </button>
+
+    </form>
+
+    <!-- Features -->
+
+    <div class="features">
+
+        <div class="card">
+
+            <h3>🤖 AI Detection</h3>
+
+            <p>
+
+                Detects Plastic, Organic,
+                Metal, Glass, Paper,
+                Cardboard and other waste
+                using YOLOv8 AI.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>📊 Confidence Score</h3>
+
+            <p>
+
+                Shows prediction confidence
+                for every detected object.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>📜 Prediction History</h3>
+
+            <p>
+
+                Stores previous
+                predictions for review.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <a href="/history">
+
+        <button>
+
+            📂 View Prediction History
+
+        </button>
+
+    </a>
+
+</div>
+
+</body>
+
+</html>
